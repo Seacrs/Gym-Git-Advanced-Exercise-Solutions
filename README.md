@@ -72,5 +72,176 @@ PS C:\Users\freez\OneDrive\Desktop\exercise\Git-Exercises>
 ### Editing Commit History:
 
 ```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
 
+nothing to commit, working tree clean
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git reflog
+8e4ea4f (HEAD -> main) HEAD@{0}: commit: chore: Create third and fourth files
+abcdb78 HEAD@{1}: commit: chore: Create third and fourth files
+51ae076 HEAD@{2}: commit: chore: Create another file
+b3dba64 HEAD@{3}: commit (initial): chore: Create initial file
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git rebase -i ^C
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git rebase -i b3dba64
+[detached HEAD d7fdfdb] chore: Create Second file
+ Date: Tue Sep 2 18:15:32 2025 +0200
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test2.md
+Successfully rebased and updated refs/heads/main.
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git log
+commit e0248de99d7e775e5329657237040c22b60f4ce0 (HEAD -> main)
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:23:54 2025 +0200
+
+    chore: Create third and fourth files
+
+commit 35c6759bc694873a739e6f2ad208ff5d67cff937
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:23:08 2025 +0200
+
+    chore: Create third and fourth files
+
+commit d7fdfdb23887def629c2d8171015cf144faec55b
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:15:32 2025 +0200
+
+    chore: Create Second file
+
+commit b3dba64cdb8195762be7bdad14290fa6434a6674
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:13:20 2025 +0200
+
+    chore: Create initial file
+
+```
+### Keeping History Tidy - Squashing Commits:
+```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git rebase -i --root
+[detached HEAD 627a4eb] chore: Create initial file
+ Date: Tue Sep 2 18:13:20 2025 +0200
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test1.md
+ create mode 100644 test2.md
+Successfully rebased and updated refs/heads/main.
+
+```
+### Splitting a Commit:
+```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git reset --soft HEAD~
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test4.md
+
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git reset --soft HEAD~
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test3.md
+        new file:   test4.md
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git restore --staged test3.md
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test4.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3.md
+
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git restore --staged test4.md
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git add test3.md
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git commit -m "chore: Create Third File"
+[main 38095a4] chore: Create Third File
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test3.md
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git add test4.md
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git commit -m "chore: Create Fourth File"
+[main 7d60794] chore: Create Fourth File
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test4.md
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git log
+commit 7d6079432faf5dea3cec1dff421b0f9b54f15437 (HEAD -> main)
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:46:33 2025 +0200
+
+    chore: Create Fourth File
+
+commit 38095a4b11082489c27d8b07529139d724a69c1a
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:46:22 2025 +0200
+
+    chore: Create Third File
+
+commit 627a4eb2997c426b17fc6f0972a20416fddfd49c
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:13:20 2025 +0200
+
+    chore: Create initial file
+
+    chore: Create initial file
+
+    chore: Create Second file
 ```
