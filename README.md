@@ -592,3 +592,66 @@ $ git reflog show ft/branch
 45359c5 (ft/branch) ft/branch@{0}: commit: Implemented test 5
 87c0d8f ft/branch@{1}: branch: Created from HEAD
 ```
+
+## Branching Basics (10 Challenges)
+
+### Feature Branch Creation:
+```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git branch ft/new-feature
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git checkout ft/new-feature
+Switched to branch 'ft/new-feature'
+```
+### Working on the Feature Branch:
+```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (ft/new-feature)
+$ git add feature.txt
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (ft/new-feature)
+$ git commit -m "Impleted core functionality for new feature"
+[ft/new-feature ac3c889] Impleted core functionality for new feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+```
+### Switching Back and Making More Changes:
+```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (ft/new-feature)
+$ git checkout main
+Switched to branch 'main'
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        readme.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git add readme.txt
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git commit -m "Updated project readme"
+[main 9634bb3] Updated project readme
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+```
+### Local vs. Remote Branches:
+```bash
+
+```
