@@ -653,5 +653,36 @@ nothing to commit, working tree clean
 ```
 ### Local vs. Remote Branches:
 ```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git branch -r                    
+  origin/ft/branch
+  origin/ft/new-feature
+  origin/main
+```
+### Branch Deletion:
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is up to date with 'origin/main'.
 
+nothing to commit, working tree clean
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git merge ft/new-feature
+Merge made by the 'ort' strategy.
+ feature.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline
+c88fcdb (HEAD -> main) Merge branch 'ft/new-feature' Added new feature
+9634bb3 (origin/main) Updated project readme
+ac3c889 (origin/ft/new-feature, ft/new-feature) Impleted core functionality for new feature
+1f94321 Implemented test 5
+87c0d8f chore: Create initial file
+58e4b49 Create third and fourth files
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git branch -d ft/new-feature
+Deleted branch ft/new-feature (was ac3c889).
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git branch
+  ft/branch
+* main
+```
+### Creating a Branch from a Commit:
+```bash
 ```
