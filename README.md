@@ -245,3 +245,269 @@ Date:   Tue Sep 2 18:13:20 2025 +0200
 
     chore: Create Second file
 ```
+### Advanced Squashing:
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log
+commit 7d6079432faf5dea3cec1dff421b0f9b54f15437 (HEAD -> main)
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:46:33 2025 +0200
+
+    chore: Create Fourth File
+
+commit 38095a4b11082489c27d8b07529139d724a69c1a
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:46:22 2025 +0200
+
+    chore: Create Third File
+
+commit 627a4eb2997c426b17fc6f0972a20416fddfd49c
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:13:20 2025 +0200
+
+    chore: Create initial file
+
+    chore: Create initial file
+
+    chore: Create Second file
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git rebase -i 627a4eb
+[detached HEAD 205d5e9] Create third and fourth files
+ Date: Tue Sep 2 18:46:22 2025 +0200
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test3.md
+ create mode 100644 test4.md
+Successfully rebased and updated refs/heads/main.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log
+commit 205d5e92309a370ffabe5689406bbeb8ea3938a0 (HEAD -> main)
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:46:22 2025 +0200
+
+    Create third and fourth files
+
+    chore: Create Third File
+
+    chore: Create Fourth File
+
+commit 627a4eb2997c426b17fc6f0972a20416fddfd49c
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:13:20 2025 +0200
+
+    chore: Create initial file
+
+    chore: Create initial file
+
+    chore: Create Second file
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> 
+```
+### Dropping a Commit:
+```bash
+git add unwanted.txt
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "Unwanted commit"
+[main 9d13c2f] Unwanted commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 unwanted.txt
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log
+commit 9d13c2f69a0e5935889718eba89ec451b52be8ab (HEAD -> main)
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Wed Sep 3 10:14:17 2025 +0200
+
+    Unwanted commit
+
+commit 205d5e92309a370ffabe5689406bbeb8ea3938a0
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:46:22 2025 +0200
+
+    Create third and fourth files
+
+    chore: Create Third File
+
+    chore: Create Fourth File
+
+commit 627a4eb2997c426b17fc6f0972a20416fddfd49c
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:13:20 2025 +0200
+
+    chore: Create initial file
+
+    chore: Create initial file
+
+    chore: Create Second file
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> ^C
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git rebase -i 205d5e9
+Successfully rebased and updated refs/heads/main.
+```
+### Reordering Commits:
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log
+commit 205d5e92309a370ffabe5689406bbeb8ea3938a0 (HEAD -> main)
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:46:22 2025 +0200
+
+    Create third and fourth files
+
+    chore: Create Third File
+
+    chore: Create Fourth File
+
+commit 627a4eb2997c426b17fc6f0972a20416fddfd49c
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:13:20 2025 +0200
+
+    chore: Create initial file
+
+    chore: Create initial file
+
+    chore: Create Second file
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git rebase -i --root
+Successfully rebased and updated refs/heads/main.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log
+commit 87c0d8fd457610b6a9573ecb6a7fa1799cf33f54 (HEAD -> main)
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:13:20 2025 +0200
+
+    chore: Create initial file
+
+    chore: Create initial file
+
+    chore: Create Second file
+
+commit 58e4b498360b66a19be2cf367a314faed856f901
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:46:22 2025 +0200
+
+    Create third and fourth files
+
+    chore: Create Third File
+
+    chore: Create Fourth File
+(END)
+```
+### Cherry-Picking Commits:
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout -b ft/branch
+Switched to a new branch 'ft/branch'
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch ft/branch
+nothing to commit, working tree clean
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add test5.md
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "Implemented test 5"
+[ft/branch 45359c5] Implemented test 5
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test5.md
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add test5.md
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "Implemented test 5"
+[ft/branch 45359c5] Implemented test 5
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test5.md
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git reflog
+45359c5 (HEAD -> ft/branch) HEAD@{0}: commit: Implemented test 5
+87c0d8f (main) HEAD@{1}: checkout: moving from main to ft/branch
+87c0d8f (main) HEAD@{2}: rebase (finish): returning to refs/heads/main
+87c0d8f (main) HEAD@{3}: rebase (pick): chore: Create initial file
+58e4b49 HEAD@{4}: rebase (pick): Create third and fourth files
+d84f4e8 HEAD@{5}: rebase (start): checkout d84f4e8906d23e895c4a5ac85f909c172749d37d
+205d5e9 HEAD@{6}: rebase (finish): returning to refs/heads/main
+205d5e9 HEAD@{7}: rebase (start): checkout 205d5e9
+9d13c2f HEAD@{8}: commit: Unwanted commit
+205d5e9 HEAD@{9}: rebase (finish): returning to refs/heads/main
+205d5e9 HEAD@{10}: rebase: fast-forward
+627a4eb HEAD@{11}: rebase: fast-forward
+41881f1 HEAD@{12}: rebase (start): checkout 41881f13571303242c254768add9eacbbf86aa01
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout main   
+Switched to branch 'main'
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git cherry-pick 45359c5
+[main 1f94321] Implemented test 5
+ Date: Wed Sep 3 10:40:09 2025 +0200
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test5.md
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log
+commit 1f94321f4fdbd5e10d96f6af3dcf73807ff71714 (HEAD -> main)
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Wed Sep 3 10:40:09 2025 +0200
+
+    Implemented test 5
+
+commit 87c0d8fd457610b6a9573ecb6a7fa1799cf33f54
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:13:20 2025 +0200
+
+    chore: Create initial file
+
+    chore: Create initial file
+
+    chore: Create Second file
+
+commit 58e4b498360b66a19be2cf367a314faed856f901
+Author: Seacrs <shemachris072@gmail.com>
+Date:   Tue Sep 2 18:46:22 2025 +0200
+
+    Create third and fourth files
+
+    chore: Create Third File
+
+    chore: Create Fourth File
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> 
+```
+### Visualizing Commit History (Bonus):
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --graph 
+* commit 1f94321f4fdbd5e10d96f6af3dcf73807ff71714 (HEAD -> main)
+| Author: Seacrs <shemachris072@gmail.com>
+| Date:   Wed Sep 3 10:40:09 2025 +0200
+|
+|     Implemented test 5
+|
+* commit 87c0d8fd457610b6a9573ecb6a7fa1799cf33f54
+| Author: Seacrs <shemachris072@gmail.com>
+| Date:   Tue Sep 2 18:13:20 2025 +0200
+|
+|     chore: Create initial file
+|
+|     chore: Create initial file
+|
+|     chore: Create Second file
+|
+* commit 58e4b498360b66a19be2cf367a314faed856f901
+  Author: Seacrs <shemachris072@gmail.com>
+  Date:   Tue Sep 2 18:46:22 2025 +0200
+
+      Create third and fourth files
+
+      chore: Create Third File
+
+      chore: Create Fourth File
+(END)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --graph --oneline
+* 1f94321 (HEAD -> main) Implemented test 5
+* 87c0d8f chore: Create initial file
+* 58e4b49 Create third and fourth files
+```
+### Understanding Reflogs (Bonus):
+```bash
+
+```
