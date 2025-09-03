@@ -509,5 +509,86 @@ PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --graph --one
 ```
 ### Understanding Reflogs (Bonus):
 ```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git reflog
+1f94321 (HEAD -> main) HEAD@{0}: cherry-pick: Implemented test 5
+87c0d8f HEAD@{1}: checkout: moving from ft/branch to main
+45359c5 (ft/branch) HEAD@{2}: commit: Implemented test 5
+87c0d8f HEAD@{3}: checkout: moving from main to ft/branch
+87c0d8f HEAD@{4}: rebase (finish): returning to refs/heads/main
+87c0d8f HEAD@{5}: rebase (pick): chore: Create initial file
+58e4b49 HEAD@{6}: rebase (pick): Create third and fourth files
+d84f4e8 HEAD@{7}: rebase (start): checkout d84f4e8906d23e895c4a5ac85f909c172749d37d
+205d5e9 HEAD@{8}: rebase (finish): returning to refs/heads/main
+205d5e9 HEAD@{9}: rebase (start): checkout 205d5e9
+9d13c2f HEAD@{10}: commit: Unwanted commit
+205d5e9 HEAD@{11}: rebase (finish): returning to refs/heads/main
+205d5e9 HEAD@{12}: rebase: fast-forward
+627a4eb HEAD@{13}: rebase: fast-forward
+41881f1 HEAD@{14}: rebase (start): checkout 41881f13571303242c254768add9eacbbf86aa01
+73b265e HEAD@{15}: commit: chore: Create third and fourth files
+205d5e9 HEAD@{16}: rebase (finish): returning to refs/heads/main
+205d5e9 HEAD@{17}: rebase: fast-forward
+627a4eb HEAD@{18}: rebase: fast-forward
+d952b31 HEAD@{19}: rebase (start): checkout d952b3122cade733b616d15f10eccbe303d4f2e2
+dbbf735 HEAD@{20}: rebase (finish): returning to refs/heads/main
+dbbf735 HEAD@{21}: rebase: fast-forward
+205d5e9 HEAD@{22}: rebase: fast-forward
+627a4eb HEAD@{23}: rebase: fast-forward
+13a0873 HEAD@{24}: rebase (start): checkout 13a0873df37b5549fd22b1764d02522e338ad76f
+78dd6c8 HEAD@{25}: commit: Unwanted commit
+3cc66b7 HEAD@{26}: revert: Revert "Unwanted commit"
+dbbf735 HEAD@{27}: reset: moving to dbbf735
+dbbf735 HEAD@{28}: reset: moving to dbbf735
+dbbf735 HEAD@{29}: reset: moving to HEAD
+dbbf735 HEAD@{30}: commit: Unwanted commit
+205d5e9 HEAD@{31}: rebase (finish): returning to refs/heads/main
+205d5e9 HEAD@{32}: rebase (squash): Create third and fourth files
+38095a4 HEAD@{33}: rebase (start): checkout 627a4eb
+7d60794 HEAD@{34}: commit: chore: Create Fourth File
+38095a4 HEAD@{35}: commit: chore: Create Third File
+627a4eb HEAD@{36}: reset: moving to HEAD~
+a8dc103 HEAD@{37}: commit: chore: Create Third File
+627a4eb HEAD@{38}: reset: moving to HEAD~
+3396771 HEAD@{39}: commit: chore: ^VCreate Third File
+627a4eb HEAD@{40}: reset: moving to HEAD~
+e732355 HEAD@{41}: reset: moving to HEAD~
+46bb24e HEAD@{42}: reset: moving to HEAD
+46bb24e HEAD@{43}: rebase (finish): returning to refs/heads/main
+46bb24e HEAD@{44}: rebase (pick): chore: Create third and fourth files
+e732355 HEAD@{45}: rebase (pick): chore: Create third and fourth files
+627a4eb HEAD@{46}: rebase (squash): chore: Create initial file
+b3dba64 HEAD@{47}: rebase: fast-forward
+d769cbb HEAD@{48}: rebase (start): checkout d769cbb17e5d0f941fd60b57863e80805a4c60b4
+e0248de HEAD@{49}: rebase (finish): returning to refs/heads/main
+e0248de HEAD@{50}: rebase (pick): chore: Create third and fourth files
+35c6759 HEAD@{51}: rebase (pick): chore: Create third and fourth files
+d7fdfdb HEAD@{52}: rebase (reword): chore: Create Second file
+51ae076 HEAD@{53}: rebase: fast-forward
+b3dba64 HEAD@{54}: rebase (start): checkout b3dba64
+8e4ea4f HEAD@{55}: commit: chore: Create third and fourth files
+abcdb78 HEAD@{56}: commit: chore: Create third and fourth files
+51ae076 HEAD@{57}: commit: chore: Create another file
+b3dba64 HEAD@{58}: commit (initial): chore: Create initial file
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git reflog @{6.hour.ago}
+7d60794 refs/heads/main@{Tue Sep 2 18:46:33 2025 +0200}: commit: chore: Create Fourth File
+38095a4 refs/heads/main@{Tue Sep 2 18:46:22 2025 +0200}: commit: chore: Create Third File
+627a4eb refs/heads/main@{Tue Sep 2 18:45:13 2025 +0200}: reset: moving to HEAD~
+a8dc103 refs/heads/main@{Tue Sep 2 18:44:52 2025 +0200}: commit: chore: Create Third File
+627a4eb refs/heads/main@{Tue Sep 2 18:44:34 2025 +0200}: reset: moving to HEAD~
+3396771 refs/heads/main@{Tue Sep 2 18:43:34 2025 +0200}: commit: chore: ^VCreate Third File
+627a4eb refs/heads/main@{Tue Sep 2 18:42:43 2025 +0200}: reset: moving to HEAD~
+e732355 refs/heads/main@{Tue Sep 2 18:42:36 2025 +0200}: reset: moving to HEAD~
+46bb24e refs/heads/main@{Tue Sep 2 18:36:38 2025 +0200}: rebase (finish): refs/heads/main onto d769cbb17e5d0f941fd60b57863e80805a4c60b4
+e0248de refs/heads/main@{Tue Sep 2 18:30:42 2025 +0200}: rebase (finish): refs/heads/main onto b3dba64cdb8195762be7bdad14290fa6434a6674
+8e4ea4f refs/heads/main@{Tue Sep 2 18:23:54 2025 +0200}: commit: chore: Create third and fourth files
+abcdb78 refs/heads/main@{Tue Sep 2 18:23:08 2025 +0200}: commit: chore: Create third and fourth files
+51ae076 refs/heads/main@{Tue Sep 2 18:15:32 2025 +0200}: commit: chore: Create another file
+b3dba64 refs/heads/main@{Tue Sep 2 18:13:20 2025 +0200}: commit (initial): chore: Create initial file
 
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git reflog show ft/branch
+45359c5 (ft/branch) ft/branch@{0}: commit: Implemented test 5
+87c0d8f ft/branch@{1}: branch: Created from HEAD
 ```
