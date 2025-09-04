@@ -685,4 +685,65 @@ PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git branch
 ```
 ### Creating a Branch from a Commit:
 ```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline
+c88fcdb (HEAD -> main) Merge branch 'ft/new-feature' Added new feature
+9634bb3 (origin/main) Updated project readme
+ac3c889 (origin/ft/new-feature) Impleted core functionality for new feature
+1f94321 Implemented test 5
+87c0d8f chore: Create initial file
+58e4b49 Create third and fourth files
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout -b ft/new-branch-from-commit 1f94321    
+Switched to a new branch 'ft/new-branch-from-commit'
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline --graph
+* 1f94321 (HEAD -> ft/new-branch-from-commit) Implemented test 5
+* 87c0d8f chore: Create initial file
+* 58e4b49 Create third and fourth files
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git branch                        
+  ft/branch
+* ft/new-branch-from-commit
+  main
+```
+### Branch Merging:
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout ft/new-branch-from-commit
+Switched to branch 'ft/new-branch-from-commit'
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add -A
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "new feature"
+[ft/new-branch-from-commit 326b322] new feature
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 feature.txt
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git merge ft/new-branch-from-commit
+Already up to date.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git merge ft/new-branch-from-commit
+Auto-merging feature.txt
+Merge made by the 'ort' strategy.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git branch
+  ft/branch
+  ft/new-branch-from-commit
+* main
+```
+### Branch Rebasing:
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout ft/new-branch-from-commit
+Switched to branch 'ft/new-branch-from-commit'
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline
+1e35dcf (HEAD -> ft/new-branch-from-commit) New features
+326b322 new feature
+1f94321 Implemented test 5
+87c0d8f chore: Create initial file
+58e4b49 Create third and fourth files
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git rebase main
+dropping 326b322a21ab65d4a9775f1262dbae2064340aef new feature -- patch contents already upstream
+Successfully rebased and updated refs/heads/ft/new-branch-from-commit.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline --graph
+* 666269f (HEAD -> ft/new-branch-from-commit) New features
+* 8a01be2 (main) Impleted core functionality for new feature
+* 9634bb3 (origin/main) Updated project readme
+* 1f94321 Implemented test 5
+* 87c0d8f chore: Create initial file
+* 58e4b49 Create third and fourth files
 ```
