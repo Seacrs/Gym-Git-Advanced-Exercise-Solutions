@@ -747,3 +747,90 @@ PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline --g
 * 87c0d8f chore: Create initial file
 * 58e4b49 Create third and fourth files
 ```
+### Renaming Branches:
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status    
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+You are currently bisecting, started from branch 'main'.
+  (use "git bisect reset" to get back to the original branch)
+
+nothing to commit, working tree clean
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git branch
+  ft/branch
+  ft/new-branch-from-commit
+* main
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git branch -m ft/new-branch-from-commit ft/improved-branch-name
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git branch
+  ft/branch
+  ft/improved-branch-name
+* main
+```
+### Checking Out Detached HEAD:
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline
+8a01be2 (HEAD -> main) Impleted core functionality for new feature
+9634bb3 (origin/main) Updated project readme
+1f94321 Implemented test 5
+87c0d8f chore: Create initial file
+58e4b49 Create third and fourth files
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout 9634bb3
+Note: switching to '9634bb3'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 9634bb3 Updated project readme
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add .
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "New files"
+[detached HEAD c49e110] New files
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test7.md
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline
+c49e110 (HEAD) New files
+9634bb3 (origin/main) Updated project readme
+1f94321 Implemented test 5
+87c0d8f chore: Create initial file
+58e4b49 Create third and fourth files
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout main
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  c49e110 New files
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> c49e110
+
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline
+924433f (HEAD -> main) Implemented core functionality for new feature
+9634bb3 (origin/main) Updated project readme
+1f94321 Implemented test 5
+87c0d8f chore: Create initial file
+58e4b49 Create third and fourth files
+```
+
+##  Advanced Workflows (10+ Challenges)
+
+### Stashing Changes:
+```bash
+
+```
