@@ -832,5 +832,148 @@ PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline
 
 ### Stashing Changes:
 ```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is up to date with 'origin/main'.
 
+You are currently bisecting, started from branch 'main'.
+  (use "git bisect reset" to get back to the original branch)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        index.html
+        nav.css
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add -A
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+You are currently bisecting, started from branch 'main'.
+  (use "git bisect reset" to get back to the original branch)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   index.html
+        new file:   nav.css
+
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git stash     
+Saved working directory and index state WIP on main: 924433f Implemented core functionality for new feature
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git stash list
+stash@{0}: WIP on main: 924433f Implemented core functionality for new feature
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git stash show
+ index.html | 0
+ nav.css    | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+```
+### Retrieving Stashed Changes:
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+You are currently bisecting, started from branch 'main'.
+  (use "git bisect reset" to get back to the original branch)
+
+nothing to commit, working tree clean
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git stash
+No local changes to save
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git stash show
+ index.html | 0
+ nav.css    | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git stash pop
+On branch main
+Your branch is up to date with 'origin/main'.
+
+You are currently bisecting, started from branch 'main'.
+  (use "git bisect reset" to get back to the original branch)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   index.html
+        new file:   nav.css
+
+Dropped refs/stash@{0} (e7b22f11df148da02e9eca3386c65dd224fff849)
+```
+### Branch Merging Conflicts (Continued):
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+You are currently bisecting, started from branch 'main'.
+  (use "git bisect reset" to get back to the original branch)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test4.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add -A
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "Added changes"
+[main cca32b9] Added changes
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout ft/new-feature
+Switched to branch 'ft/new-feature'
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout ft/new-feature
+M       test4.md
+Already on 'ft/new-feature'
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch ft/new-feature
+You are currently bisecting, started from branch 'main'.
+  (use "git bisect reset" to get back to the original branch)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test4.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add -A
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "Additional changes"
+[ft/new-feature f0d22a4] Additional changes
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git merge ft/new-feature
+Auto-merging test4.md
+CONFLICT (content): Merge conflict in test4.md
+Automatic merge failed; fix conflicts and then commit the result.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --merge --oneline
+f0d22a4 (ft/new-feature) Additional changes
+cca32b9 (HEAD -> main) Added changes
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+You are currently bisecting, started from branch 'main'.
+  (use "git bisect reset" to get back to the original branch)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   test4.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add -A
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "Merge fix"
+[main e455a24] Merge fix
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+You are currently bisecting, started from branch 'main'.
+  (use "git bisect reset" to get back to the original branch)
+
+nothing to commit, working tree clean
 ```
