@@ -977,3 +977,129 @@ You are currently bisecting, started from branch 'main'.
 
 nothing to commit, working tree clean
 ```
+### Resolving Merge Conflicts with a Merge Tool:
+```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add -A
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "changed test2"
+[main 2c987c7] changed test2
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git pull
+Already up to date.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git pull
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 970 bytes | 57.00 KiB/s, done.
+From https://github.com/Seacrs/Git-Exercises
+   5ea5def..89b30b0  main       -> origin/main
+Auto-merging test2.md
+CONFLICT (content): Merge conflict in test2.md
+Automatic merge failed; fix conflicts and then commit the result.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git mergetool
+Merging:
+test2.md
+
+Normal merge conflict for 'test2.md':
+  {local}: modified file
+  {remote}: modified file
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+        modified:   test2.md
+
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "merged conflicts"
+[main 01e05a3] merged conflicts
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git push -u origin main
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 569 bytes | 569.00 KiB/s, done.
+Total 6 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 1 local object.
+To https://github.com/Seacrs/Git-Exercises
+   89b30b0..01e05a3  main -> main
+branch 'main' set up to track 'origin/main'.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status            
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout ft/branch
+Switched to branch 'ft/branch'
+Your branch is up to date with 'origin/ft/branch'.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add -A
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "changes made on test2"
+[ft/branch 6437065] changes made on test2
+ 1 file changed, 1 insertion(+)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch ft/branch
+Your branch is ahead of 'origin/ft/branch' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git merge ft/branch
+Auto-merging test2.md
+CONFLICT (content): Merge conflict in test2.md
+Automatic merge failed; fix conflicts and then commit the result.
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   test2.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --merge --oneline
+6437065 (ft/branch) changes made on test2
+01e05a3 (HEAD -> main, origin/main, origin/HEAD) merged conflicts
+89b30b0 Update test2.md
+2c987c7 changed test2
+5ea5def Update test2.md
+4272728 (origin/ft/branch) different test2
+3dddef2 changed test2
+3e91bd2 Made changes to test2
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git mergetool
+Merging:
+test2.md
+
+Normal merge conflict for 'test2.md':
+  {local}: modified file
+  {remote}: modified file
+warning: in the working copy of 'test2.md', LF will be replaced by CRLF the next time Git touches it
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "fixed conflict with ft/branch"
+[main c4c9075] fixed conflict with ft/branch
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is ahead of 'origin/main' by 5 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+```
+### Understanding Detached HEAD State:
+```bash
+
+```
