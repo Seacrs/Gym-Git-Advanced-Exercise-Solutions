@@ -1361,3 +1361,141 @@ Your branch is up to date with 'origin/main'.
 nothing to commit, working tree clean
 
 ```
+### Working with Tags:
+```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git log --oneline
+bf1aa1b (HEAD -> main, origin/main, origin/HEAD) Added: secret txt to .gitignore
+5c34768 C:/Program Files/Git/tmp to be ignored
+baa9890 Created .gitignore file
+58114d4 (ft/index) changed position of ft/index
+8dc7043 Created index
+dd8d152 fixed using vim
+857ab66 (ft/branch) Mirror
+d601d66 new commit
+9399d18 made changes to test4
+c4c9075 fixed conflict with ft/branch
+6437065 changes made on test2
+01e05a3 merged conflicts
+89b30b0 Update test2.md
+2c987c7 changed test2
+5ea5def Update test2.md
+4272728 (origin/ft/branch) different test2
+3dddef2 changed test2
+3e91bd2 Made changes to test2
+e455a24 Merge fix
+f0d22a4 (ft/new-feature) Additional changes
+cca32b9 Added changes
+81e6dee merge fix
+afdc4a5 new features added
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git tag -a v1.0 bf1aa1b -m "Release version 1.0.0"
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git tag -l
+v1.0
+```
+### Listing and Deleting Tags:
+```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git tag -l
+v1.0
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git tag -d v1.0
+Deleted tag 'v1.0' (was 99ab76f)
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git tag -l
+```
+### Pushing Local Work to Remote Repositories:
+```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git push -u origin main
+branch 'main' set up to track 'origin/main'.
+Everything up-to-date
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git branch
+  ft/branch
+  ft/improved-branch-name
+  ft/index
+  ft/new-feature
+* main
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git checkout ft/branch
+Switched to branch 'ft/branch'
+Your branch is ahead of 'origin/ft/branch' by 3 commits.
+  (use "git push" to publish your local commits)
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (ft/branch)
+$ git push -u origin ft/branch
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/Seacrs/Git-Exercises
+   4272728..857ab66  ft/branch -> ft/branch
+branch 'ft/branch' set up to track 'origin/ft/branch'.
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (ft/branch)
+$ git checkout ft/improved-branch-name
+Switched to branch 'ft/improved-branch-name'
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (ft/improved-branch-name)
+$ git push -u origin ft/improved-branch-name
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 499 bytes | 166.00 KiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+remote:
+remote: Create a pull request for 'ft/improved-branch-name' on GitHub by visiting:
+remote:      https://github.com/Seacrs/Git-Exercises/pull/new/ft/improved-branch-name
+remote:
+To https://github.com/Seacrs/Git-Exercises
+ * [new branch]      ft/improved-branch-name -> ft/improved-branch-name
+branch 'ft/improved-branch-name' set up to track 'origin/ft/improved-branch-name'.
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (ft/improved-branch-name)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$
+
+```
+### Pulling Changes from Remote Repositories:
+```bash
+
+```
