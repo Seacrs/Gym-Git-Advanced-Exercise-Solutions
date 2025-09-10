@@ -1101,5 +1101,263 @@ nothing to commit, working tree clean
 ```
 ### Understanding Detached HEAD State:
 ```bash
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline
+dd8d152 (HEAD -> main, origin/main, origin/HEAD) fixed using vim
+857ab66 (ft/branch) Mirror
+d601d66 new commit
+9399d18 made changes to test4
+c4c9075 fixed conflict with ft/branch
+6437065 changes made on test2
+01e05a3 merged conflicts
+89b30b0 Update test2.md
+2c987c7 changed test2
+5ea5def Update test2.md
+4272728 (origin/ft/branch) different test2
+3dddef2 changed test2
+3e91bd2 Made changes to test2
+e455a24 Merge fix
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add -A
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "Created index"
+[main 8dc7043] Created index
+ 1 file changed, 14 insertions(+)
+ create mode 100644 index.html
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline
+8dc7043 (HEAD -> main) Created index
+dd8d152 (origin/main, origin/HEAD) fixed using vim
+857ab66 (ft/branch) Mirror
+d601d66 new commit
+9399d18 made changes to test4
+c4c9075 fixed conflict with ft/branch
+6437065 changes made on test2
+01e05a3 merged conflicts
+89b30b0 Update test2.md
+2c987c7 changed test2
+5ea5def Update test2.md
+4272728 (origin/ft/branch) different test2
+3dddef2 changed test2
+3e91bd2 Made changes to test2
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout dd8d152
+Note: switching to 'dd8d152'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at dd8d152 fixed using vim
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git add -A
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git commit -m "made changes to index"
+[detached HEAD dcdb8fe] made changes to index
+ 1 file changed, 25 insertions(+)
+ create mode 100644 index.html
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline
+dcdb8fe (HEAD) made changes to index
+dd8d152 (origin/main, origin/HEAD) fixed using vim
+857ab66 (ft/branch) Mirror
+d601d66 new commit
+9399d18 made changes to test4
+c4c9075 fixed conflict with ft/branch
+6437065 changes made on test2
+01e05a3 merged conflicts
+89b30b0 Update test2.md
+2c987c7 changed test2
+5ea5def Update test2.md
+4272728 (origin/ft/branch) different test2
+3dddef2 changed test2
+3e91bd2 Made changes to test2
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout main
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  dcdb8fe made changes to index
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> dcdb8fe
+
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git log --oneline
+8dc7043 (HEAD -> main) Created index
+dd8d152 (origin/main, origin/HEAD) fixed using vim
+857ab66 (ft/branch) Mirror
+d601d66 new commit
+9399d18 made changes to test4
+c4c9075 fixed conflict with ft/branch
+6437065 changes made on test2
+01e05a3 merged conflicts
+89b30b0 Update test2.md
+2c987c7 changed test2
+5ea5def Update test2.md
+4272728 (origin/ft/branch) different test2
+3dddef2 changed test2
+3e91bd2 Made changes to test2
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git reflog --oneling
+fatal: unrecognized argument: --oneling
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git reflog --oneline
+8dc7043 (HEAD -> main) HEAD@{0}: checkout: moving from dcdb8fe97d2c039bcfcfab15b04a8b76b03a141e to main
+dcdb8fe HEAD@{1}: commit: made changes to index
+dd8d152 (origin/main, origin/HEAD) HEAD@{2}: checkout: moving from main to dd8d152
+8dc7043 (HEAD -> main) HEAD@{3}: commit: Created index
+dd8d152 (origin/main, origin/HEAD) HEAD@{4}: commit (merge): fixed using vim
+d601d66 HEAD@{5}: checkout: moving from ft/branch to main
+857ab66 (ft/branch) HEAD@{6}: commit: Mirror
+9399d18 HEAD@{7}: checkout: moving from main to ft/branch
+d601d66 HEAD@{8}: commit: new commit
+c4c9075 HEAD@{9}: checkout: moving from ft/branch to main
+9399d18 HEAD@{10}: checkout: moving from main to ft/branch
+c4c9075 HEAD@{11}: reset: moving to c4c9075
+6437065 HEAD@{12}: reset: moving to 6437065
+9399d18 HEAD@{13}: reset: moving to 9399d18
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout dcdb8fe
+Note: switching to 'dcdb8fe'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at dcdb8fe made changes to index
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout - b ft/index
+error: pathspec 'b' did not match any file(s) known to git
+error: pathspec 'ft/index' did not match any file(s) known to git
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git branch ft/index      
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout ft/index
+Switched to branch 'ft/index'
+PS C:\Users\freez\OneDrive\Desktop\Exercise\Git-Exercises> git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+```
+### Ignoring Files/Directories:
+```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ touch .gitignore
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git add -A
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git commit -m "Created .gitignore file"
+[main baa9890] Created .gitignore file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 .gitignore
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git add -A
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git commit -m "/tmp to be ignored"
+[main 5c34768] C:/Program Files/Git/tmp to be ignored
+ 1 file changed, 1 insertion(+)
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 4 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git add -A
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git commit -m "Added: secret txt to .gitignore"
+[main bf1aa1b] Added: secret txt to .gitignore
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 5 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git push -u origin main
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (14/14), 1.59 KiB | 812.00 KiB/s, done.
+Total 14 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (5/5), completed with 1 local object.
+To https://github.com/Seacrs/Git-Exercises
+   dd8d152..bf1aa1b  main -> main
+branch 'main' set up to track 'origin/main'.
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
 
 ```
