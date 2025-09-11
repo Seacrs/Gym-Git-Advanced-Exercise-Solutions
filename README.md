@@ -1497,5 +1497,72 @@ $
 ```
 ### Pulling Changes from Remote Repositories:
 ```bash
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git init
+Reinitialized existing Git repository in C:/Users/freez/OneDrive/Desktop/Exercise/Git-Exercises/.git/
 
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git pull origin main
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 1.00 KiB | 48.00 KiB/s, done.
+From https://github.com/Seacrs/Git-Exercises
+ * branch            main       -> FETCH_HEAD
+   cac2f50..0f78f74  main       -> origin/main
+CONFLICT (modify/delete): readme.txt deleted in 0f78f749d7c577836babce61cd71c79d77b054e2 and modified in HEAD.  Version HEAD of readme.txt left in tree.
+Automatic merge failed; fix conflicts and then commit the result.
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main|MERGING)
+$ git status
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+        new file:   readme.md
+
+Unmerged paths:
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+        deleted by them: readme.txt
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main|MERGING)
+$ git rm readme.txt
+rm 'readme.txt'
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main|MERGING)
+$ git commit -m "Fixed conflicts"
+[main a05b09e] Fixed conflicts
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git push origin main
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 465 bytes | 465.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/Seacrs/Git-Exercises
+   0f78f74..a05b09e  main -> main
+
+freez@FREEZ MINGW64 ~/onedrive/desktop/Exercise/Git-Exercises (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
 ```
